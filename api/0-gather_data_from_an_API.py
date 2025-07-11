@@ -1,22 +1,6 @@
 #!/usr/bin/python3
-"""
-This script uses a REST API to retrieve and display the TODO list progress
-of an employee based on their ID.
 
-Usage:
-    ./todo.py <employee_id>
-
-Requirements:
-    - requests
-
-PEP8 Validation:
-    - Imports are ordered alphabetically
-    - Line length <= 79 characters
-    - Functions and logic are properly spaced and indented
-    - Docstrings follow PEP257 convention
-"""
-
-import requests
+import request
 import sys
 
 
