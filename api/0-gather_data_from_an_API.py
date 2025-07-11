@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 This script uses a REST API to retrieve and display the TODO list progress
 of an employee based on their ID.
@@ -8,12 +8,6 @@ Usage:
 
 Requirements:
     - requests
-
-PEP8 Validation:
-    - Imports are ordered alphabetically
-    - Line length <= 79 characters
-    - Functions and logic are properly spaced and indented
-    - Docstrings follow PEP257 convention
 """
 
 import requests
@@ -27,13 +21,11 @@ def fetch_employee_todo_progress(employee_id):
     Args:
         employee_id (int): The ID of the employee.
     """
-    user_url = (
-        f'https://jsonplaceholder.typicode.com/users/{employee_id}'
-    )
-    todos_url = (
-        f'https://jsonplaceholder.typicode.com/todos?userId={employee_id}'
-    )
+    # URLs
+    user_url = f'https://jsonplaceholder.typicode.com/users/{employee_id}'
+    todos_url = f'https://jsonplaceholder.typicode.com/todos?userId={employee_id}'
 
+    # Fetch user info
     user_response = requests.get(user_url)
     if user_response.status_code != 200:
         print(f"Employee with ID {employee_id} not found.")
@@ -41,6 +33,7 @@ def fetch_employee_todo_progress(employee_id):
 
     employee_name = user_response.json().get("name")
 
+    # Fetch todos
     todos_response = requests.get(todos_url)
     todos = todos_response.json()
 
@@ -48,10 +41,8 @@ def fetch_employee_todo_progress(employee_id):
     done_tasks = [task for task in todos if task.get("completed")]
     number_of_done_tasks = len(done_tasks)
 
-    print(
-        f"Employee {employee_name} is done with tasks "
-        f"({number_of_done_tasks}/{total_tasks}):"
-    )
+    # Output
+    print(f"Employee {employee_name} is done with tasks({number_of_done_tasks}/{total_tasks}):")
     for task in done_tasks:
         print(f"\t {task.get('title')}")
 
@@ -67,4 +58,5 @@ if __name__ == "__main__":
     except ValueError:
         print("Employee ID must be an integer.")
         sys.exit(1)
+
 
