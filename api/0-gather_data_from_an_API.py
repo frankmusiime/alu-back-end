@@ -8,6 +8,12 @@ Usage:
 
 Requirements:
     - requests
+
+PEP8 Validation:
+    - Imports are ordered alphabetically
+    - Line length <= 79 characters
+    - Functions and logic are properly spaced and indented
+    - Docstrings follow PEP257 convention
 """
 
 import requests
