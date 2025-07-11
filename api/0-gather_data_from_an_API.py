@@ -8,11 +8,16 @@ Usage:
 
 Requirements:
     - requests
+
+PEP8 Validation:
+    - Imports are ordered alphabetically
+    - Line length <= 79 characters
+    - Functions and logic are properly spaced and indented
+    - Docstrings follow PEP257 convention
 """
 
 import requests
 import sys
-
 
 def fetch_employee_todo_progress(employee_id):
     """
@@ -42,7 +47,10 @@ def fetch_employee_todo_progress(employee_id):
     number_of_done_tasks = len(done_tasks)
 
     # Output
-    print(f"Employee {employee_name} is done with tasks({number_of_done_tasks}/{total_tasks}):")
+    print(
+        f"Employee {employee_name} is done with tasks"
+        f"({number_of_done_tasks}/{total_tasks}):"
+    )
     for task in done_tasks:
         print(f"\t {task.get('title')}")
 
