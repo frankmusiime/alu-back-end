@@ -19,6 +19,7 @@ PEP8 Validation:
 import requests
 import sys
 
+
 def fetch_employee_todo_progress(employee_id):
     """
     Fetches and displays the TODO list progress for a given employee ID.
@@ -26,11 +27,9 @@ def fetch_employee_todo_progress(employee_id):
     Args:
         employee_id (int): The ID of the employee.
     """
-    # URLs
     user_url = f'https://jsonplaceholder.typicode.com/users/{employee_id}'
     todos_url = f'https://jsonplaceholder.typicode.com/todos?userId={employee_id}'
 
-    # Fetch user info
     user_response = requests.get(user_url)
     if user_response.status_code != 200:
         print(f"Employee with ID {employee_id} not found.")
@@ -38,7 +37,6 @@ def fetch_employee_todo_progress(employee_id):
 
     employee_name = user_response.json().get("name")
 
-    # Fetch todos
     todos_response = requests.get(todos_url)
     todos = todos_response.json()
 
@@ -46,9 +44,8 @@ def fetch_employee_todo_progress(employee_id):
     done_tasks = [task for task in todos if task.get("completed")]
     number_of_done_tasks = len(done_tasks)
 
-    # Output
     print(
-        f"Employee {employee_name} is done with tasks"
+        f"Employee {employee_name} is done with tasks "
         f"({number_of_done_tasks}/{total_tasks}):"
     )
     for task in done_tasks:
