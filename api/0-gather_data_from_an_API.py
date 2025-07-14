@@ -50,6 +50,7 @@ def fetch_employee_todo_progress(employee_id):
 
     print(
         f"Employee {employee_name} is done with tasks({number_of_done_tasks}/{total_tasks}):")
+
     for task in done_tasks:
         print(f"\t {task.get('title')}")
 
@@ -65,3 +66,4 @@ if __name__ == "__main__":
         print("Employee ID must be an integer.")
         sys.exit(1)
     fetch_employee_todo_progress(emp_id)
+
